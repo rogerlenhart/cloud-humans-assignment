@@ -8,8 +8,9 @@ export class ProApplicationsController {
   constructor(private sendProApplication: SendProApplication) {}
 
   @Post()
-  send(@Body() body: SendProApplicationDto) {
-    const { proApplicationResult } = this.sendProApplication.execute(body);
+  async send(@Body() body: SendProApplicationDto) {
+    const { proApplicationResult } =
+      await this.sendProApplication.execute(body);
 
     return ProApplicationResultViewModel.toHTTP(proApplicationResult);
   }

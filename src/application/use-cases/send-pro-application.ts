@@ -4,6 +4,7 @@ import {
   EducationLevel,
 } from '../../domain/entitites/pro-application.entity';
 import { ProApplicationResult } from '../../domain/entitites/pro-application-result.entity';
+import { ProjectsRepository } from '../repositories/projects-repository';
 
 interface SendProApplicationRequest {
   age: number;
@@ -30,17 +31,22 @@ interface SendProApplicationResponse {
 
 @Injectable()
 export class SendProApplication {
-  execute(request: SendProApplicationRequest): SendProApplicationResponse {
+  constructor(private projectsRepository: ProjectsRepository) {}
+
+  async execute(
+    request: SendProApplicationRequest,
+  ): Promise<SendProApplicationResponse> {
     const proApplication = new ProApplication(request);
 
     const eligibilityScore = proApplication.calculateScore();
 
-    const proApplicationResult = new ProApplicationResult({
-      score: eligibilityScore,
-      selected_project: '',
-      eligible_projects: [],
-      ineligible_projects: [],
-    });
+    const projects = await this.projectsRepository.getAll();
+
+    const proApplicationResult = new ProApplicationResult(
+      eligibilityScore,
+      projects,
+    );
+
     return { proApplicationResult };
   }
 }
