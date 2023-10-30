@@ -4,10 +4,16 @@ export enum EducationLevel {
   BACHELORS_DEGREE_OR_HIGH = 'bachelors_degree_or_high',
 }
 
-type PastExperinces = { sales: boolean; support: boolean };
-type InternetTest = { download_speed: number; upload_speed: number };
+export interface PastExperinces {
+  sales: boolean;
+  support: boolean;
+}
+export interface InternetTest {
+  download_speed: number;
+  upload_speed: number;
+}
 
-interface ProApplicationProps {
+export interface ProApplicationProps {
   age: number;
   education_level: EducationLevel;
   past_experiences: PastExperinces;
@@ -58,11 +64,11 @@ export class ProApplication {
     );
   }
 
-  private isUnderAge(): boolean {
+  public isUnderAge(): boolean {
     return this.age < 18;
   }
 
-  private calculateEducationScore(): number {
+  public calculateEducationScore(): number {
     const educationLevelScore: Record<EducationLevel, number> = {
       no_education: 0,
       high_school: 1,
@@ -72,12 +78,12 @@ export class ProApplication {
     return educationLevelScore[this.education_level];
   }
 
-  private calculateExperienceScore(): number {
+  public calculateExperienceScore(): number {
     const { sales, support } = this.past_experiences;
     return (sales ? 5 : 0) + (support ? 3 : 0);
   }
 
-  private calculateInternetScore(): number {
+  public calculateInternetScore(): number {
     const { download_speed, upload_speed } = this.internet_test;
     return (
       this.calculateInternetScoreBySpeed(download_speed) +
@@ -95,7 +101,7 @@ export class ProApplication {
     }
   }
 
-  private calculateWritingScore(): number {
+  public calculateWritingScore(): number {
     if (this.writing_score < 0.3) {
       return -1;
     } else if (this.writing_score <= 0.7) {
@@ -105,7 +111,7 @@ export class ProApplication {
     }
   }
 
-  private calculateReferralCodeScore(): number {
+  public calculateReferralCodeScore(): number {
     return this.referral_code === 'token1234' ? 1 : 0;
   }
 }
