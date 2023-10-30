@@ -15,10 +15,8 @@ export class ProApplicationResult {
     eligible_projects: [],
   };
 
-  constructor(score: number, projects: Project[]) {
+  constructor(score: number) {
     this.props.score = score;
-    this.calculateEligibility(projects);
-    if (score > 0) this.selectProject();
   }
 
   get score(): number {
@@ -37,7 +35,7 @@ export class ProApplicationResult {
     return this.getProjectTitles(this.props.ineligible_projects);
   }
 
-  private calculateEligibility(projects: Project[]) {
+  public calculateEligibility(projects: Project[]) {
     const eligible = [];
     const ineligible = [];
 
@@ -53,12 +51,14 @@ export class ProApplicationResult {
     this.props.ineligible_projects = ineligible;
   }
 
-  private selectProject() {
-    this.props.selected_project = this.props.eligible_projects.reduce(
-      (max, current) => {
-        return max.requiredScore > current.requiredScore ? max : current;
-      },
-    );
+  public selectProject() {
+    if (this.props.eligible_projects.length > 0) {
+      this.props.selected_project = this.props.eligible_projects.reduce(
+        (max, current) => {
+          return max.requiredScore > current.requiredScore ? max : current;
+        },
+      );
+    }
   }
 
   public getProjectTitles(projects: Project[]) {

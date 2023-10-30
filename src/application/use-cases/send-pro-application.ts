@@ -42,10 +42,9 @@ export class SendProApplication {
 
     const projects = await this.projectsRepository.getAll();
 
-    const proApplicationResult = new ProApplicationResult(
-      eligibilityScore,
-      projects,
-    );
+    const proApplicationResult = new ProApplicationResult(eligibilityScore);
+    proApplicationResult.calculateEligibility(projects);
+    proApplicationResult.selectProject();
 
     return { proApplicationResult };
   }
