@@ -1,4 +1,4 @@
-interface ProjectProps {
+export interface ProjectProps {
   title: string;
   requiredScore: number;
 }
