@@ -8,5 +8,7 @@ describe('Project', () => {
     });
 
     expect(project).toBeTruthy();
+    expect(project.title).toBe('Project ABC');
+    expect(project.requiredScore).toBe(5);
   });
 });

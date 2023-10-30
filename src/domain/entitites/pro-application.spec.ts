@@ -3,21 +3,24 @@ import { EducationLevel, ProApplication } from './pro-application.entity';
 
 describe('Pro Application', () => {
   it('should be able to create a pro application', () => {
+    const internetTest = { download_speed: 40.6, upload_speed: 32.3 };
+    const pastExperiences = { sales: true, support: false };
+
     const proApplication = new ProApplication({
       age: 18,
       education_level: EducationLevel.HIGH_SCHOOL,
-      internet_test: {
-        download_speed: 40.6,
-        upload_speed: 32.3,
-      },
-      past_experiences: {
-        sales: true,
-        support: false,
-      },
+      internet_test: internetTest,
+      past_experiences: pastExperiences,
       writing_score: 0.7,
     });
 
     expect(proApplication).toBeTruthy();
+    expect(proApplication.age).toBe(18);
+    expect(proApplication.education_level).toBe(EducationLevel.HIGH_SCHOOL);
+    expect(proApplication.internet_test).toBe(internetTest);
+    expect(proApplication.past_experiences).toBe(pastExperiences);
+    expect(proApplication.writing_score).toBe(0.7);
+    expect(proApplication.referral_code).toBeUndefined();
   });
 
   it('should calculate score 0 for under age pro', () => {
