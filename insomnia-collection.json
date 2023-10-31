@@ -1,0 +1,66 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2023-10-31T17:19:06.757Z",
+  "__export_source": "insomnia.desktop.app:v2023.3.0",
+  "resources": [
+    {
+      "_id": "req_971b6b236d724f3eb7f57d4cf1378509",
+      "parentId": "wrk_0c2319c80a704cf0bb8a4f42574d10ec",
+      "modified": 1698635109740,
+      "created": 1698503219135,
+      "url": "http://localhost:3000/pro-applications",
+      "name": "Pro Application",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"age\": 18,\n\t\"education_level\": \"high_school\",\n\t\"internet_test\": {\n\t\t\"download_speed\": 57.6,\n\t\t\"upload_speed\": 57.9\n\t},\n\t\"past_experiences\": {\n\t\t\"sales\": false,\n\t\t\"support\": true\n\t},\n\t\"writing_score\": 0.7,\n\t\"referral_code\": \"9\"\n}"
+      },
+      "parameters": [],
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "authentication": {},
+      "metaSortKey": -1698503219135,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "wrk_0c2319c80a704cf0bb8a4f42574d10ec",
+      "parentId": null,
+      "modified": 1698503209641,
+      "created": 1698503209641,
+      "name": "Pro Application",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_c62b82eaf1add87f280eecc425a617b80ec60604",
+      "parentId": "wrk_0c2319c80a704cf0bb8a4f42574d10ec",
+      "modified": 1698503209643,
+      "created": 1698503209643,
+      "name": "Base Environment",
+      "data": {},
+      "dataPropertyOrder": null,
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1698503209643,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_c62b82eaf1add87f280eecc425a617b80ec60604",
+      "parentId": "wrk_0c2319c80a704cf0bb8a4f42574d10ec",
+      "modified": 1698503209645,
+      "created": 1698503209645,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    }
+  ]
+}
