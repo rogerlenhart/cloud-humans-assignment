@@ -6,7 +6,7 @@ import {
 import { ProApplicationResult } from '../../domain/entitites/pro-application-result.entity';
 import { ProjectsRepository } from '../repositories/projects-repository';
 
-interface SendProApplicationRequest {
+export interface SendProApplicationRequest {
   age: number;
   education_level: EducationLevel;
   past_experiences: PastExperiencesRequest;

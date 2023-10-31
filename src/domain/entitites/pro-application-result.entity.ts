@@ -1,6 +1,6 @@
 import { Project } from './project.entity';
 
-interface ProApplicationResultProps {
+export interface ProApplicationResultProps {
   score: number;
   selected_project: Project;
   eligible_projects: Project[];
